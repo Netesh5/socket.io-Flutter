@@ -1,10 +1,24 @@
 import 'package:chatapp/core/theme_manager/colors.dart';
-import 'package:chatapp/widgets/textformfield.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:chatapp/data/local/socket_io.dart';
+
 import 'package:flutter/material.dart';
 
-class GroupScreen extends StatelessWidget {
+import '../../../widgets/textformfield.dart';
+
+class GroupScreen extends StatefulWidget {
   const GroupScreen({Key? key}) : super(key: key);
+
+  @override
+  State<GroupScreen> createState() => _GroupScreenState();
+}
+
+class _GroupScreenState extends State<GroupScreen> {
+  SocketIO socketIO = SocketIO();
+  @override
+  void initState() {
+    socketIO.connect();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
