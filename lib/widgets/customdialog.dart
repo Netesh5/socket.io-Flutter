@@ -4,6 +4,8 @@ import 'package:chatapp/widgets/textformfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+String username = "";
+
 customDialog(BuildContext context) {
   return showCupertinoDialog(
       barrierLabel: "Create new chat",
@@ -17,6 +19,7 @@ customDialog(BuildContext context) {
           content: CustomTextFormField(
             controller: groupNameTextEditingController,
             formkey: groupChatNameFormkey,
+            isuername: false,
           ),
           actions: [
             TextButton(
@@ -42,6 +45,34 @@ customDialog(BuildContext context) {
                   "Create",
                   style: TextStyle(color: textPurpleColor),
                 )),
+          ],
+        );
+      });
+}
+
+customUsernameDialog(context) {
+  return showCupertinoDialog(
+      context: context,
+      builder: (contex) {
+        return CupertinoAlertDialog(
+          title: const Text("Enter username"),
+          content: CustomTextFormField(
+            controller: usernameTextEditingController,
+            formkey: usernameFormkey,
+            isuername: true,
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  if (usernameFormkey.currentState!.validate()) {
+                    Navigator.of(context).pop();
+                    username = usernameTextEditingController.text;
+                  }
+                },
+                child: const Text(
+                  "Done",
+                  style: TextStyle(color: textPurpleColor),
+                ))
           ],
         );
       });
