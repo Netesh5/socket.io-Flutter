@@ -38,6 +38,7 @@ dependencies:
   socket_io_client: ^2.0.1
   flutter_bloc: ^8.1.2
   intl: ^0.18.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
