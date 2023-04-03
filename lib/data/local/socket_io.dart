@@ -17,7 +17,9 @@ class SocketIO {
     socket!.onConnect((id) {
       socket!.on("sendMsgServer", (data) {
         print(data);
-        model.add(MsgModel.fromJson(data));
+        if (data["userId"] != uuid) {
+          model.add(MsgModel.fromJson(data));
+        }
       });
     });
   }
@@ -28,13 +30,15 @@ class SocketIO {
         dateTime: DateFormat("E,d MMM yyyy hh:mm:ss").format(now),
         type: "ownMsg",
         msg: msg,
-        sender: username);
+        sender: username,
+        userId: uuid);
     model.add(msgModel);
     socket!.emit("sendMsg", {
       "dateTime": DateFormat("E,d MMM yyyy hh:mm:ss").format(now),
       "type": "ownMsg",
       "msg": msg,
-      "sender": username
+      "sender": username,
+      "userId": uuid
     });
   }
 }

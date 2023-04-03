@@ -3,9 +3,10 @@ import 'package:chatapp/src/presentation/groupage/grouppage.dart';
 import 'package:chatapp/widgets/textformfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 String username = "";
-
+var uuid = const Uuid().v1();
 customDialog(BuildContext context) {
   return showCupertinoDialog(
       barrierLabel: "Create new chat",

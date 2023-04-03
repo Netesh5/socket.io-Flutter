@@ -41,24 +41,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: 35,
                 ))),
         body: Center(
-          child: BlocConsumer<UsernameCubit, Usernamestate>(
-            listener: (context, state) {
-              if (username.isNotEmpty) {
-                BlocProvider.of<UsernameCubit>(context).containValue();
-              } else if (username.isEmpty) {
-                BlocProvider.of<UsernameCubit>(context).novalue();
-              }
-            },
-            builder: (context, state) {
-              if (state == Usernamestate.hasvalue) {
-                return Text("Welcome, $username");
-              } else if (state == Usernamestate.novalue) {
-                return const SizedBox();
-              } else {
-                return const SizedBox();
-              }
-            },
-          ),
-        ));
+          child: Text("Welcome ,$username"),
+        )
+        // Center(
+        //   child: BlocConsumer<UsernameCubit, Usernamestate>(
+        //     listener: (context, state) {
+        //       if (username.isNotEmpty) {
+        //         BlocProvider.of<UsernameCubit>(context).containValue();
+        //       } else if (username.isEmpty) {
+        //         BlocProvider.of<UsernameCubit>(context).novalue();
+        //       }
+        //     },
+        //     builder: (context, state) {
+        //       if (state == Usernamestate.hasvalue) {
+        //         return Text("Welcome, $username");
+        //       } else if (state == Usernamestate.novalue) {
+        //         return const SizedBox();
+        //       } else {
+        //         return const SizedBox();
+        //       }
+        //     },
+        //   ),
+        // )
+        );
   }
 }

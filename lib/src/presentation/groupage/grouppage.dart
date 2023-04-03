@@ -21,6 +21,7 @@ class _GroupScreenState extends State<GroupScreen> {
   void initState() {
     socketIO.connect();
     super.initState();
+    setState(() {});
   }
 
   @override
@@ -71,6 +72,7 @@ class _GroupScreenState extends State<GroupScreen> {
                               chatTextEditingController.text, username);
                           chatTextEditingController.clear();
                         }
+                        setState(() {});
                       },
                       icon: const Icon(
                         Icons.send,
